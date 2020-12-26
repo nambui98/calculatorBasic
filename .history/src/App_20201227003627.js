@@ -13,18 +13,27 @@ function App() {
       setText("")
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
-        debugger
-        setText(text.slice(0,text.length-1)+value)
-      } else {
-        setText(text+value);
+      let test=handleReConvert(text)
+      constructor(test) {
+        
       }
-      
+      let result=handleConvert(test+value);
+      console.log(result);
+      setText(result);
     }
   };
   const handleConvert = (number)=>{
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
+  const handleReConvert = (string)=>{
+    if(string===""){
+      return ""
+    }
+    return parseFloat(string.replaceAll(",",""))
+  }
+  console.log('====================================');
+  console.log(typeof parseFloat("5,555,555".replaceAll(",","")));
+  console.log('====================================');
   const list = [
     { key: "c", value: "" },
     { key: "/", value: "/" },
@@ -63,7 +72,7 @@ function App() {
             type="text"
             readonly
             name="txt"
-            value={handleConvert(text)}
+            value={text}
             className="value"
           />
           {

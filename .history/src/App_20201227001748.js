@@ -3,28 +3,28 @@ import Tilt from "react-vanilla-tilt";
 import "./App.css";
 
 function App() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState(0);
   const handleChange = (value) => {
     if (value === "=") {
       setText(eval(text));
     } else if(text==="" && ["/","*","-","+"].includes(value)){
       return false
     } else if(value===""){
-      setText("")
+      setText(0)
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
-        debugger
-        setText(text.slice(0,text.length-1)+value)
-      } else {
-        setText(text+value);
-      }
-      
+      setText(text + value);
     }
   };
   const handleConvert = (number)=>{
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
+  const handleReConvert = (string)=>{
+    return parseFloat(string.replaceAll(",",""))
+  }
+  console.log('====================================');
+  console.log(typeof parseFloat("5,555,555".replaceAll(",","")));
+  console.log('====================================');
   const list = [
     { key: "c", value: "" },
     { key: "/", value: "/" },
@@ -63,7 +63,7 @@ function App() {
             type="text"
             readonly
             name="txt"
-            value={handleConvert(text)}
+            value={text}
             className="value"
           />
           {

@@ -13,13 +13,8 @@ function App() {
       setText("")
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
-        debugger
-        setText(text.slice(0,text.length-1)+value)
-      } else {
-        setText(text+value);
-      }
-      
+      console.log(text[text.length-1]);
+      setText(text+value);
     }
   };
   const handleConvert = (number)=>{

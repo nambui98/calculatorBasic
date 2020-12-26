@@ -6,25 +6,16 @@ function App() {
   const [text, setText] = useState("");
   const handleChange = (value) => {
     if (value === "=") {
-      setText(eval(text));
+      setText(eval(parseFloat(text.replace(",",""))).toString().split( /(?=(?:\d{3})+(?:\.|$))/g ).join( "," ));
     } else if(text==="" && ["/","*","-","+"].includes(value)){
       return false
     } else if(value===""){
       setText("")
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
-        debugger
-        setText(text.slice(0,text.length-1)+value)
-      } else {
-        setText(text+value);
-      }
-      
+      setText((text + value).toString().split( /(?=(?:\d{3})+(?:\.|$))/g ).join( "," ));
     }
   };
-  const handleConvert = (number)=>{
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
   const list = [
     { key: "c", value: "" },
     { key: "/", value: "/" },
@@ -63,7 +54,8 @@ function App() {
             type="text"
             readonly
             name="txt"
-            value={handleConvert(text)}
+            // pattern="([0-9]{1,3}).([0-9]{1,3})"
+            value={text}
             className="value"
           />
           {

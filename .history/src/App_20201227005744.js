@@ -13,12 +13,13 @@ function App() {
       setText("")
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
+      if (["/","*","-","+"].includes(text)) {
         debugger
-        setText(text.slice(0,text.length-1)+value)
+        setText(text.slice(0,text.length-2)+value)
       } else {
         setText(text+value);
       }
+      // console.log(text[text.length-1]);
       
     }
   };

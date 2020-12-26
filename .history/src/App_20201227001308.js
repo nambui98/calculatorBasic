@@ -13,18 +13,9 @@ function App() {
       setText("")
     }
     else {
-      if (["/","*","-","+"].includes(value) && ["/","*","-","+"].includes(text[text.length-1]) ) {
-        debugger
-        setText(text.slice(0,text.length-1)+value)
-      } else {
-        setText(text+value);
-      }
-      
+      setText(text + value);
     }
   };
-  const handleConvert = (number)=>{
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  }
   const list = [
     { key: "c", value: "" },
     { key: "/", value: "/" },
@@ -63,7 +54,7 @@ function App() {
             type="text"
             readonly
             name="txt"
-            value={handleConvert(text)}
+            value={text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             className="value"
           />
           {

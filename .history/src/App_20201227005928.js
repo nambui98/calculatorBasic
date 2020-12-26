@@ -19,6 +19,7 @@ function App() {
       } else {
         setText(text+value);
       }
+      // console.log(text[text.length-1]);
       
     }
   };
