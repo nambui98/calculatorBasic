@@ -7,7 +7,12 @@ function App() {
   const handleChange = (value) => {
     if (value === "=") {
       setText(eval(text));
-    } else {
+    } else if(text==="" && ["/","*","-","+"].includes(value)){
+      return false
+    } else if(value===""){
+      setText("")
+    }
+    else {
       setText(text + value);
     }
   };
