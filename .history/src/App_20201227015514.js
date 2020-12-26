@@ -9,7 +9,8 @@ function App() {
       if(text[0]==="0"&& !text.indexOf(".")){
         setText(eval(text.slice(text.lastIndexOf("0")+1, text.length)))
       }else{
-        setText(parseFloat(eval(text)));
+
+        setText(eval(text));
       }
       // let arr = text.split(/[//,\/*+-]/);
       // console.log((0.3-0.2).toFixed(1));

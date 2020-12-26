@@ -6,11 +6,11 @@ function App() {
   const [text, setText] = useState("");
   const handleChange = (value) => {
     if (value === "=" && text !=="") {
-      if(text[0]==="0"&& !text.indexOf(".")){
-        setText(eval(text.slice(text.lastIndexOf("0")+1, text.length)))
-      }else{
-        setText(parseFloat(eval(text)));
+      if(text[0]===0){
+        debugger
+        text = text.slice(1, text.length)
       }
+      setText(eval(text));
       // let arr = text.split(/[//,\/*+-]/);
       // console.log((0.3-0.2).toFixed(1));
       // console.log(eval(text));
